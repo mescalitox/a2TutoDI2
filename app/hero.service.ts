@@ -4,6 +4,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Hero } from './hero';
+import { Logger } from './logger.service';
 // import { HEROES } from './mock-heroes';
 
 @Injectable()
@@ -12,7 +13,7 @@ export class HeroService {
 	private heroesUrl = 'app/heroes';  // URL to web api
 	private headers = new Headers({ 'Content-Type': 'application/json' });
 
-	constructor(private http: Http) { }
+	constructor(private http: Http, private logger: Logger) { }
 
 	getHeroes(): Promise<Hero[]> {
 		return this.http.get(this.heroesUrl)
